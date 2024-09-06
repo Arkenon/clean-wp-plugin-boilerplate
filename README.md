@@ -1,8 +1,10 @@
 # Clean Wp Plugin Boilerplate
 
-Plugin boilerplate for Gutenberg blocks developers.
+Plugin boilerplate for WordPress plugin developers.
 
 This boilerplate is based on [Wordpress Create Block](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-create-block/)  and [Clean Architecture](https://www.google.com/search?q=Clean+Architecture)
+
+It supports block development with React, ESNext, and JSX compilation.
 
 ## Installation
 
