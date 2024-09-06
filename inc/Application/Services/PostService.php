@@ -11,7 +11,7 @@ use PluginName\Domain\Repositories\PostRepositoryInterface;
 use ReflectionException;
 use WP_Post;
 
-class PostManager implements PostServiceInterface {
+class PostService implements PostServiceInterface {
 	private PostRepositoryInterface $repository;
 	private Mapper $mapper;
 

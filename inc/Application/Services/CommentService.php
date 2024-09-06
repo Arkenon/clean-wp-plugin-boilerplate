@@ -10,7 +10,7 @@ use PluginName\Common\Services\Mapper;
 use PluginName\Domain\Repositories\CommentRepositoryInterface;
 use ReflectionException;
 
-class CommentManager implements CommentServiceInterface {
+class CommentService implements CommentServiceInterface {
 
 	private CommentRepositoryInterface $repository;
 	private Mapper $mapper;

@@ -12,7 +12,7 @@ use ReflectionException;
 use WP_Term;
 
 
-class TaxonomyManager implements TaxonomyServiceInterface {
+class TaxonomyService implements TaxonomyServiceInterface {
 	private TaxonomyRepositoryInterface $repository;
 	private Mapper $mapper;
 

@@ -11,10 +11,10 @@ use PluginName\Application\Interfaces\CommentServiceInterface;
 use PluginName\Application\Interfaces\PostServiceInterface;
 use PluginName\Application\Interfaces\TaxonomyServiceInterface;
 use PluginName\Application\Interfaces\UserServiceInterface;
-use PluginName\Application\UseCases\CommentManager;
-use PluginName\Application\UseCases\PostManager;
-use PluginName\Application\UseCases\TaxonomyManager;
-use PluginName\Application\UseCases\UserManager;
+use PluginName\Application\UseCases\CommentService;
+use PluginName\Application\UseCases\PostService;
+use PluginName\Application\UseCases\TaxonomyService;
+use PluginName\Application\UseCases\UserService;
 use PluginName\Domain\Repositories\CommentRepositoryInterface;
 use PluginName\Domain\Repositories\PostRepositoryInterface;
 use PluginName\Domain\Repositories\TaxonomyRepositoryInterface;
@@ -38,16 +38,16 @@ class DI
 
 			//Comment
 			CommentRepositoryInterface::class => autowire(CommentRepository::class),
-			CommentServiceInterface::class => autowire(CommentManager::class),
+			CommentServiceInterface::class => autowire(CommentService::class),
 			//Post
 			PostRepositoryInterface::class => autowire(PostRepository::class),
-			PostServiceInterface::class => autowire(PostManager::class),
+			PostServiceInterface::class => autowire(PostService::class),
 			//Taxonomy
 			TaxonomyRepositoryInterface::class => autowire(TaxonomyRepository::class),
-			TaxonomyServiceInterface::class => autowire(TaxonomyManager::class),
+			TaxonomyServiceInterface::class => autowire(TaxonomyService::class),
 			//User
 			UserRepositoryInterface::class => autowire(UserRepository::class),
-			UserServiceInterface::class => autowire(UserManager::class),
+			UserServiceInterface::class => autowire(UserService::class),
 
 		]);
 

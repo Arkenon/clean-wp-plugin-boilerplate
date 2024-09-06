@@ -10,7 +10,7 @@ use PluginName\Common\Services\Mapper;
 use PluginName\Domain\Repositories\UserRepositoryInterface;
 use ReflectionException;
 
-class UserManager implements UserServiceInterface {
+class UserService implements UserServiceInterface {
 
 	private UserRepositoryInterface $repository;
 	private Mapper $mapper;
