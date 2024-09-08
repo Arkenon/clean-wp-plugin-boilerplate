@@ -13,21 +13,40 @@ class PostTypeBook extends PostTypeBuilder {
 	public function __construct() {
 		parent::__construct( self::$slug );
 
-		$this->setPublic( true )
-		     ->setHierarchical( false )
-		     ->setSupports( [ 'title', 'editor', 'thumbnail' ] )
-		     ->setMenuIcon( 'dashicons-book-alt' )
-		     ->setRewrite( 'books' )
-		     ->setLabel( 'name', 'Books' )
-		     ->setLabel( 'singular_name', 'Book' )
-		     ->setLabel( 'add_new', 'Add New Book' )
-		     ->setLabel( 'add_new_item', 'Add New Book' )
-		     ->setLabel( 'edit_item', 'Edit Book' )
-		     ->setLabel( 'new_item', 'New Book' )
-		     ->setLabel( 'view_item', 'View Book' )
-		     ->setLabel( 'search_items', 'Search Books' )
-		     ->setLabel( 'not_found', 'No books found' )
-		     ->setLabel( 'not_found_in_trash', 'No books found in Trash' )
-		     ->setArgument( 'show_in_rest', true );
+		$labels = [
+			'name'               => esc_html__( 'Book', 'plugin-name' ),
+			'singular_name'      => esc_html__( 'Book', 'plugin-name' ),
+			'menu_name'          => esc_html__( 'Book', 'plugin-name' ),
+			'name_admin_bar'     => esc_html__( 'Book', 'plugin-name' ),
+			'add_new'            => esc_html__( 'Add New', 'plugin-name' ),
+			'add_new_item'       => esc_html__( 'Add New Book', 'plugin-name' ),
+			'new_item'           => esc_html__( 'New Book', 'plugin-name' ),
+			'edit_item'          => esc_html__( 'Edit Book', 'plugin-name' ),
+			'view_item'          => esc_html__( 'View Book', 'plugin-name' ),
+			'all_items'          => esc_html__( 'Books', 'plugin-name' ),
+			'search_items'       => esc_html__( 'Search Book', 'plugin-name' ),
+			'parent_item_colon'  => esc_html__( 'Parent Book:', 'plugin-name' ),
+			'not_found'          => esc_html__( 'No book found.', 'plugin-name' ),
+			'not_found_in_trash' => esc_html__( 'No book found in trash.', 'plugin-name' ),
+		];
+
+		$args = [
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'show_in_rest'       => true,
+			'menu_icon'          => 'dashicons-book',
+			'query_var'          => true,
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => true,
+			'supports'           => [ 'title', 'author', 'editor', 'comments' ],
+			'taxonomies'         => [],
+		];
+
+		$this->setLabels( $labels )
+		     ->setArguments( $args );
 	}
 }

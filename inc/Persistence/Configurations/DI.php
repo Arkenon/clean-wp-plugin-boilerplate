@@ -2,7 +2,7 @@
 
 namespace PluginName\Persistence\Configurations;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 use DI\Container;
 use DI\ContainerBuilder;
@@ -11,10 +11,10 @@ use PluginName\Application\Interfaces\CommentServiceInterface;
 use PluginName\Application\Interfaces\PostServiceInterface;
 use PluginName\Application\Interfaces\TaxonomyServiceInterface;
 use PluginName\Application\Interfaces\UserServiceInterface;
-use PluginName\Application\UseCases\CommentService;
-use PluginName\Application\UseCases\PostService;
-use PluginName\Application\UseCases\TaxonomyService;
-use PluginName\Application\UseCases\UserService;
+use PluginName\Application\Services\CommentService;
+use PluginName\Application\Services\PostService;
+use PluginName\Application\Services\TaxonomyService;
+use PluginName\Application\Services\UserService;
 use PluginName\Domain\Repositories\CommentRepositoryInterface;
 use PluginName\Domain\Repositories\PostRepositoryInterface;
 use PluginName\Domain\Repositories\TaxonomyRepositoryInterface;
@@ -25,31 +25,30 @@ use PluginName\Persistence\Repositories\TaxonomyRepository;
 use PluginName\Persistence\Repositories\UserRepository;
 use function DI\autowire;
 
-class DI
-{
+class DI {
 	/**
 	 * @throws Exception
 	 */
 	public static function container(): Container {
 		$containerBuilder = new ContainerBuilder();
-		$containerBuilder->useAutowiring(true);
+		$containerBuilder->useAutowiring( true );
 
-		$containerBuilder->addDefinitions([
+		$containerBuilder->addDefinitions( [
 
 			//Comment
-			CommentRepositoryInterface::class => autowire(CommentRepository::class),
-			CommentServiceInterface::class => autowire(CommentService::class),
+			CommentRepositoryInterface::class  => autowire( CommentRepository::class ),
+			CommentServiceInterface::class     => autowire( CommentService::class ),
 			//Post
-			PostRepositoryInterface::class => autowire(PostRepository::class),
-			PostServiceInterface::class => autowire(PostService::class),
+			PostRepositoryInterface::class     => autowire( PostRepository::class ),
+			PostServiceInterface::class        => autowire( PostService::class ),
 			//Taxonomy
-			TaxonomyRepositoryInterface::class => autowire(TaxonomyRepository::class),
-			TaxonomyServiceInterface::class => autowire(TaxonomyService::class),
+			TaxonomyRepositoryInterface::class => autowire( TaxonomyRepository::class ),
+			TaxonomyServiceInterface::class    => autowire( TaxonomyService::class ),
 			//User
-			UserRepositoryInterface::class => autowire(UserRepository::class),
-			UserServiceInterface::class => autowire(UserService::class),
+			UserRepositoryInterface::class     => autowire( UserRepository::class ),
+			UserServiceInterface::class        => autowire( UserService::class ),
 
-		]);
+		] );
 
 		return $containerBuilder->build();
 	}

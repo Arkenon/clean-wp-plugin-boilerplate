@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName\Application\UseCases;
+namespace PluginName\Application\Services;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -21,10 +21,13 @@ class UserService implements UserServiceInterface {
 	}
 
 	/**
+	 * Create a new DTO for a related model
+	 *
 	 * @param array $args
 	 *
 	 * @return UserDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( array $args ) {
 		$user = $this->repository->create( $args );
@@ -37,10 +40,13 @@ class UserService implements UserServiceInterface {
 	}
 
 	/**
+	 * Update a DTO for a related model
+	 *
 	 * @param array $args
 	 *
 	 * @return UserDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( array $args ) {
 		$user = $this->repository->update( $args );
@@ -57,10 +63,13 @@ class UserService implements UserServiceInterface {
 	}
 
 	/**
+	 * Get a DTO for a related model
+	 *
 	 * @param int $id
 	 *
 	 * @return UserDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function get( int $id ) {
 		$user = $this->repository->get( $id );
@@ -73,12 +82,15 @@ class UserService implements UserServiceInterface {
 	}
 
 	/**
+	 * Get a list of DTOs for a related model
+	 *
 	 * @param array $args
 	 *
 	 * @return array|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$users = $this->repository->getList( $args );
 
 		if ( ! $users ) {

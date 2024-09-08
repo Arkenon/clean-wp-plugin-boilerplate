@@ -18,10 +18,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
+	 * Create a new model
+	 *
 	 * @param array $args
 	 *
 	 * @return Post|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( array $args ) {
 		$postId = wp_insert_post( $args, true );
@@ -34,10 +37,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
+	 * Update a model
+	 *
 	 * @param array $args
 	 *
 	 * @return Post|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( array $args ) {
 		$postId = wp_update_post( $args, true );
@@ -50,10 +56,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
+	 * Delete a model
+	 *
 	 * @param int $id
 	 * @param bool $forceDelete
 	 *
 	 * @return bool
+	 * @since 1.0.0
 	 */
 	public function delete( int $id, bool $forceDelete = false ): bool {
 		$getPost = get_post( $id );
@@ -68,6 +77,8 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
+	 * Get a model
+	 *
 	 * @param int $id
 	 *
 	 * @return Post|bool
@@ -84,12 +95,14 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
+	 * Get a list of models
+	 *
 	 * @param array $args
 	 *
-	 * @return array|bool
+	 * @return Post[]|WP_Post[]|bool
 	 * @throws ReflectionException
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$getPosts = get_posts( $args );
 
 		$posts = [];

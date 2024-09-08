@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName\Application\UseCases;
+namespace PluginName\Application\Services;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -22,12 +22,15 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
+	 * Create a new DTO for a related model
+	 *
 	 * @param string $term
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
 	 * @return TaxonomyDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( string $term, string $taxonomy, array $args = [] ) {
 		$term_ = $this->repository->create( $term, $taxonomy, $args );
@@ -40,12 +43,15 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
+	 * Update a DTO for a related model
+	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
 	 * @return TaxonomyDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( int $term_id, string $taxonomy, array $args = [] ) {
 		$term_ = $this->repository->update( $term_id, $taxonomy, $args );
@@ -79,12 +85,15 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
+	 * Get a list of DTOs for a related model
+	 *
 	 * @param array $args
 	 *
-	 * @return array|bool|string
+	 * @return array|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$terms = $this->repository->getList( $args );
 
 		if ( ! $terms ) {

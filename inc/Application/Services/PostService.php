@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName\Application\UseCases;
+namespace PluginName\Application\Services;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -21,10 +21,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
+	 *  Create a DTO for the related model
+	 *
 	 * @param array $args
 	 *
 	 * @return PostDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( array $args ) {
 		$post = $this->repository->create( $args );
@@ -37,10 +40,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
+	 * Update a DTO for the related model
+	 *
 	 * @param array $args
 	 *
 	 * @return PostDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( array $args ) {
 		$post = $this->repository->update( $args );
@@ -57,10 +63,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
+	 * Get a DTO for the related model
+	 *
 	 * @param int $id
 	 *
 	 * @return PostDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function get( int $id ) {
 		$post = $this->repository->get( $id );
@@ -73,12 +82,15 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
+	 * Get a list of DTOs for the related model
+	 *
 	 * @param array $args
 	 *
 	 * @return array|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$posts = $this->repository->getList( $args );
 
 		if ( ! $posts ) {

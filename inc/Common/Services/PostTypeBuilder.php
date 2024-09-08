@@ -16,47 +16,38 @@ class PostTypeBuilder {
 	}
 
 	/**
-	 * @param string $key
-	 * @param mixed $value
+	 * Set the post type arguments
+	 *
+	 * @param array $args
 	 *
 	 * @return $this
+	 * @since 1.0.0
 	 */
-	public function setArgument( string $key, $value ): self {
-		$this->args[ $key ] = $value;
+	public function setArguments( array $args ): self {
+		$this->args = $args;
 
 		return $this;
 	}
 
-	public function setLabel( string $key, string $value ): self {
-		$this->labels[ $key ] = $value;
+	/**
+	 * Set the post type labels
+	 *
+	 * @param array $labels
+	 *
+	 * @return $this
+	 * @since 1.0.0
+	 */
+	public function setLabels( array $labels ): self {
+		$this->labels = $labels;
 
 		return $this;
 	}
 
-	public function setPublic( bool $is_public ): self {
-		return $this->setArgument( 'public', $is_public );
-	}
-
-	public function setHierarchical( bool $is_hierarchical ): self {
-		return $this->setArgument( 'hierarchical', $is_hierarchical );
-	}
-
-	public function setSupports( array $supports ): self {
-		return $this->setArgument( 'supports', $supports );
-	}
-
-	public function setMenuIcon( string $icon ): self {
-		return $this->setArgument( 'menu_icon', $icon );
-	}
-
-	public function setRewrite( ?string $slug = null ): self {
-		if ( $slug === null ) {
-			$slug = $this->post_type;
-		}
-
-		return $this->setArgument( 'rewrite', [ 'slug' => $slug ] );
-	}
-
+	/**
+	 * Register the post type
+	 *
+	 * @since 1.0.0
+	 */
 	public function register(): void {
 		if ( ! empty( $this->labels ) ) {
 			$this->args['labels'] = $this->labels;

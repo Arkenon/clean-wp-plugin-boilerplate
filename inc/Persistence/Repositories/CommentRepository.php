@@ -17,10 +17,13 @@ class CommentRepository implements CommentRepositoryInterface {
 	}
 
 	/**
+	 * Create a new model
+	 *
 	 * @param array $args
 	 *
 	 * @return Comment|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( array $args ) {
 		$commentId = wp_insert_comment( $args );
@@ -33,10 +36,13 @@ class CommentRepository implements CommentRepositoryInterface {
 	}
 
 	/**
+	 * Update a model
+	 *
 	 * @param array $args
 	 *
 	 * @return Comment|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( array $args ) {
 		$update = wp_update_comment( $args );
@@ -49,20 +55,26 @@ class CommentRepository implements CommentRepositoryInterface {
 	}
 
 	/**
+	 * Delete a model
+	 *
 	 * @param int $id
 	 * @param bool $forceDelete
 	 *
 	 * @return bool
+	 * @since 1.0.0
 	 */
 	public function delete( int $id, bool $forceDelete = false ): bool {
 		return wp_delete_comment( $id, $forceDelete );
 	}
 
 	/**
+	 * Get a model
+	 *
 	 * @param int $id
 	 *
 	 * @return Comment|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function get( int $id ) {
 		$comment = get_comment( $id );
@@ -75,12 +87,15 @@ class CommentRepository implements CommentRepositoryInterface {
 	}
 
 	/**
+	 * Get a list of models
+	 *
 	 * @param array $args
 	 *
 	 * @return array|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$comments = get_comments( $args );
 
 		$commentList = [];

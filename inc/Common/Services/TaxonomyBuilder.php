@@ -18,59 +18,38 @@ class TaxonomyBuilder {
 	}
 
 	/**
-	 * @param string $key
-	 * @param mixed $value
+	 * Set the taxonomy arguments
+	 *
+	 * @param array $args
 	 *
 	 * @return $this
+	 * @since 1.0.0
 	 */
-	public function setArgument( string $key, $value ): self {
-		$this->args[ $key ] = $value;
+	public function setArguments( array $args ): self {
+		$this->args = $args;
 
 		return $this;
 	}
 
-	public function setLabel( string $key, string $value ): self {
-		$this->labels[ $key ] = $value;
+	/**
+	 * Set the taxonomy labels
+	 *
+	 * @param array $labels
+	 *
+	 * @return $this
+	 * @since 1.0.0
+	 */
+	public function setLabels( array $labels ): self {
+		$this->labels = $labels;
 
 		return $this;
 	}
 
-	public function setPublic( bool $is_public ): self {
-		return $this->setArgument( 'public', $is_public );
-	}
-
-	public function setHierarchical( bool $is_hierarchical ): self {
-		return $this->setArgument( 'hierarchical', $is_hierarchical );
-	}
-
-	public function setShowUi( bool $show_ui ): self {
-		return $this->setArgument( 'show_ui', $show_ui );
-	}
-
-	public function setShowInMenu( bool $show_in_menu ): self {
-		return $this->setArgument( 'show_in_menu', $show_in_menu );
-	}
-
-	public function setShowInQuickEdit( bool $show_in_quick_edit ): self {
-		return $this->setArgument( 'show_in_quick_edit', $show_in_quick_edit );
-	}
-
-	public function setShowTagcloud( bool $show_tagcloud ): self {
-		return $this->setArgument( 'show_tagcloud', $show_tagcloud );
-	}
-
-	public function setShowInRestApi( bool $show_in_rest ): self {
-		return $this->setArgument( 'show_in_rest', $show_in_rest );
-	}
-
-	public function setRewrite( ?array $rewrite = null ): self {
-		if ( $rewrite === null ) {
-			$rewrite = [ 'slug' => $this->taxonomy ];
-		}
-
-		return $this->setArgument( 'rewrite', $rewrite );
-	}
-
+	/**
+	 * Register the taxonomy
+	 *
+	 * @since 1.0.0
+	 */
 	public function register(): void {
 		if ( ! empty( $this->labels ) ) {
 			$this->args['labels'] = $this->labels;

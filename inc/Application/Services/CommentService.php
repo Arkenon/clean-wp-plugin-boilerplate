@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName\Application\UseCases;
+namespace PluginName\Application\Services;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -21,10 +21,13 @@ class CommentService implements CommentServiceInterface {
 	}
 
 	/**
+	 * Create a new DTO for a related model
+	 *
 	 * @param array $args
 	 *
 	 * @return CommentDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( array $args ) {
 		$comment = $this->repository->create( $args );
@@ -37,10 +40,13 @@ class CommentService implements CommentServiceInterface {
 	}
 
 	/**
+	 * Update a DTO for a related model
+	 *
 	 * @param array $args
 	 *
 	 * @return CommentDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( array $args ) {
 		$comment = $this->repository->update( $args );
@@ -57,10 +63,13 @@ class CommentService implements CommentServiceInterface {
 	}
 
 	/**
+	 * Get a DTO for the related model
+	 *
 	 * @param int $id
 	 *
 	 * @return CommentDto|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function get( int $id ) {
 		$comment = $this->get( $id );
@@ -74,12 +83,15 @@ class CommentService implements CommentServiceInterface {
 	}
 
 	/**
+	 * Get a list of DTOs for the related model
+	 *
 	 * @param array $args
 	 *
-	 * @return array|bool
+	 * @return array|false
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$comments = $this->repository->getList( $args );
 
 		if ( ! $comments ) {

@@ -81,7 +81,7 @@ class UserRepository implements UserRepositoryInterface {
 	 * @return array|bool
 	 * @throws ReflectionException
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$getUsers = get_users( $args );
 
 		$users = [];

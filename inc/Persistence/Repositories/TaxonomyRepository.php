@@ -18,12 +18,15 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
+	 * Create a new model
+	 *
 	 * @param string $term
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
 	 * @return Taxonomy|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function create( string $term, string $taxonomy, array $args = [] ) {
 		$created_term = wp_insert_term( $term, $taxonomy, $args );
@@ -37,12 +40,15 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
+	 * Update a model
+	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
 	 * @return Taxonomy|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function update( int $term_id, string $taxonomy, array $args = [] ) {
 		$updated_term = wp_update_term( $term_id, $taxonomy, $args );
@@ -55,11 +61,14 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
+	 * Delete a model
+	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
 	 * @return bool
+	 * @since 1.0.0
 	 */
 	public function delete( int $term_id, string $taxonomy, array $args = [] ): bool {
 		$delete = wp_delete_term( $term_id, $taxonomy, $args );
@@ -72,11 +81,14 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
+	 * Get a model
+	 *
 	 * @param int $id
 	 * @param string $taxonomy
 	 *
 	 * @return Taxonomy|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
 	public function get( int $id, string $taxonomy = '' ) {
 		if ( ! empty( $taxonomy ) ) {
@@ -93,12 +105,15 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
+	 * Get a list of models
+	 *
 	 * @param array $args
 	 *
-	 * @return array|bool|string
+	 * @return array|bool
 	 * @throws ReflectionException
+	 * @since 1.0.0
 	 */
-	public function getList( array $args ) {
+	public function getList( array $args ): array {
 		$terms = get_terms( $args );
 
 		$termList = [];
