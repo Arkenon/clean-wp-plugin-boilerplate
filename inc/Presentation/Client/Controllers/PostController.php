@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName\Presentation\Public\Controllers;
+namespace PluginName\Presentation\Client\Controllers;
 
 use PluginName\Application\DTOs\Post\PostDto;
 use PluginName\Application\Interfaces\PostServiceInterface;
@@ -15,7 +15,9 @@ class PostController {
 	}
 
 	/**
+	 * Add new post
 	 * @return PostDto|bool
+	 * @since 1.0.0
 	 */
 	public function create() {
 		$args = [
@@ -28,9 +30,12 @@ class PostController {
 	}
 
 	/**
+	 * Update post
+	 *
 	 * @param int $post_id
 	 *
 	 * @return PostDto|bool
+	 * @since 1.0.0
 	 */
 	public function update( int $post_id ) {
 		$args = [
@@ -41,22 +46,26 @@ class PostController {
 		];
 
 		return $this->service->create( $args );
-
 	}
 
 	/**
+	 * Get post by id
+	 *
 	 * @param int $id
 	 *
 	 * @return PostDto|bool
+	 * @since 1.0.0
 	 */
 	public function get( int $id ) {
 		return $this->service->get( $id );
 	}
 
 	/**
-	 * @return bool|array
+	 * Get list of posts
+	 * @return array
+	 * @since 1.0.0
 	 */
-	public function getList() {
+	public function getList(): array {
 		$args = [
 			'post_type'      => 'post',
 			'post_status'    => 'publish',
@@ -64,9 +73,16 @@ class PostController {
 		];
 
 		return $this->service->getList( $args );
-
 	}
 
+	/**
+	 * Delete post by id
+	 *
+	 * @param int $id
+	 *
+	 * @return bool
+	 * @since 1.0.0
+	 */
 	public function delete( int $id ): bool {
 		return $this->service->delete( $id );
 	}

@@ -1,4 +1,4 @@
-<?php
+<?php declare( strict_types=1 );
 /**
  * Plugin Name:       Clean Wp Plugin Boilerplate
  * Description:       Modern plugin boilerplate for WordPress. Uses clean architecture.
@@ -13,21 +13,21 @@
  * @package PluginName
  */
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 use PluginName\App;
 use PluginName\Persistence\Configurations\DI;
 
-if (is_readable(__DIR__ . '/vendor/autoload.php')) {
+if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-define('PLUGIN_NAME_VERSION', get_file_data(__FILE__, array('version' => 'Version'))['version']);
-define('PLUGIN_NAME_PLUGIN_URL', rtrim(plugin_dir_url(__FILE__), '/') . '/');
-define('PLUGIN_NAME_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
+define( 'PLUGIN_NAME_VERSION', get_file_data( __FILE__, array( 'version' => 'Version' ) )['version'] );
+define( 'PLUGIN_NAME_PLUGIN_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) . '/' );
+define( 'PLUGIN_NAME_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 //Run plugin
-if (class_exists(App::class)) {
+if ( class_exists( App::class ) ) {
 	DI::container()->get( App::class )->run();
 }
 

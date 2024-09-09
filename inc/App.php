@@ -15,10 +15,35 @@ use PluginName\Infrastructure\Services\MailService;
 use PluginName\Infrastructure\Services\PostTypeService;
 use PluginName\Infrastructure\Services\TaxonomyService;
 use PluginName\Persistence\Configurations\DI;
+use PluginName\Presentation\Admin\Controllers\AdminController;
 
 defined( 'ABSPATH' ) || exit;
 
 class App {
+
+	/**
+	 * List of services to be initialized
+	 * @var array
+	 * @since 1.0.0
+	 */
+	private array $services = [
+		AssetService::class,
+		BlockService::class,
+		i18nService::class,
+		PostTypeService::class,
+		TaxonomyService::class,
+		CustomFieldService::class,
+		MailService::class
+	];
+
+	/**
+	 * List of controllers to be initialized
+	 * @var array
+	 * @since 1.0.0
+	 */
+	private array $controllers = [
+		AdminController::class,
+	];
 	public function run() {
 		//Activation
 		register_activation_hook( __FILE__, [ $this, 'initActivation' ] );
@@ -49,23 +74,15 @@ class App {
 	/**
 	 * @throws DependencyException
 	 * @throws NotFoundException
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function initPluginServices() {
 		do_action( 'plugin_name_before_init' );
 
-		$services = [
-			AssetService::class,
-			BlockService::class,
-			i18nService::class,
-			PostTypeService::class,
-			TaxonomyService::class,
-			CustomFieldService::class,
-			MailService::class
-		];
+		$services_and_controllers = array_merge( $this->services, $this->controllers );
 
-		foreach ( $services as $service ) {
-			DI::container()->get( $service );
+		foreach ( $services_and_controllers as $item ) {
+			DI::container()->get( $item );
 		}
 
 		do_action( 'plugin_name_after_init' );
