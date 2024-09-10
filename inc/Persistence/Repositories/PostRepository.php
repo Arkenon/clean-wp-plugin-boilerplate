@@ -5,16 +5,18 @@ namespace PluginName\Persistence\Repositories;
 defined( 'ABSPATH' ) || exit;
 
 use PluginName\Common\Services\Mapper;
-use PluginName\Domain\Entities\Post;
+use PluginName\Domain\Models\Post;
 use PluginName\Domain\Repositories\PostRepositoryInterface;
 use ReflectionException;
 use WP_Post;
 
 class PostRepository implements PostRepositoryInterface {
 	private Mapper $mapper;
+	private string $model; //Model for custom post types. Default is Post.
 
-	public function __construct( Mapper $mapper ) {
+	public function __construct( Mapper $mapper, string $model = Post::class ) {
 		$this->mapper = $mapper;
+		$this->model  = $model;
 	}
 
 	/**
@@ -22,7 +24,7 @@ class PostRepository implements PostRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return Post|bool
+	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -41,7 +43,7 @@ class PostRepository implements PostRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return Post|bool
+	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -81,14 +83,14 @@ class PostRepository implements PostRepositoryInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return Post|bool
+	 * @return bool|object
 	 * @throws ReflectionException
 	 */
 	public function get( int $id ) {
 		$getPost = get_post( $id );
 
 		if ( $getPost !== null ) {
-			return $this->mapper->mapObjectToObject( $getPost, Post::class );
+			return $this->mapper->mapObjectToObject( $getPost, $this->model );
 		} else {
 			return false;
 		}
@@ -99,7 +101,7 @@ class PostRepository implements PostRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return Post[]|WP_Post[]|bool
+	 * @return object[]|bool
 	 * @throws ReflectionException
 	 */
 	public function getList( array $args ): array {
@@ -110,7 +112,7 @@ class PostRepository implements PostRepositoryInterface {
 			$firstPost = reset( $getPosts );
 			if ( $firstPost instanceof WP_Post ) {
 				foreach ( $getPosts as $post ) {
-					$mappedPost = $this->mapper->mapObjectToObject( $post, Post::class );
+					$mappedPost = $this->mapper->mapObjectToObject( $post, $this->model );
 					$posts[]    = $mappedPost;
 				}
 

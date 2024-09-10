@@ -14,10 +14,12 @@ use WP_Post;
 class PostService implements PostServiceInterface {
 	private PostRepositoryInterface $repository;
 	private Mapper $mapper;
+	private string $model; //Model for custom post types. Default is PostDto.
 
-	public function __construct( PostRepositoryInterface $repository, Mapper $mapper ) {
+	public function __construct( PostRepositoryInterface $repository, Mapper $mapper, string $model = PostDto::class ) {
 		$this->repository = $repository;
 		$this->mapper     = $mapper;
+		$this->model      = $model;
 	}
 
 	/**
@@ -25,7 +27,7 @@ class PostService implements PostServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return PostDto|bool
+	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -36,7 +38,7 @@ class PostService implements PostServiceInterface {
 			return false;
 		}
 
-		return $this->mapper->mapObjectToObject( $post, PostDto::class );
+		return $this->mapper->mapObjectToObject( $post, $this->model );
 	}
 
 	/**
@@ -44,7 +46,7 @@ class PostService implements PostServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return PostDto|bool
+	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -55,7 +57,7 @@ class PostService implements PostServiceInterface {
 			return false;
 		}
 
-		return $this->mapper->mapObjectToObject( $post, PostDto::class );
+		return $this->mapper->mapObjectToObject( $post, $this->model );
 	}
 
 	public function delete( int $id, bool $forceDelete = false ): bool {
@@ -67,7 +69,7 @@ class PostService implements PostServiceInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return PostDto|bool
+	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -78,7 +80,7 @@ class PostService implements PostServiceInterface {
 			return false;
 		}
 
-		return $this->mapper->mapObjectToObject( $post, PostDto::class );
+		return $this->mapper->mapObjectToObject( $post, $this->model );
 	}
 
 	/**
@@ -86,7 +88,7 @@ class PostService implements PostServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return array|bool
+	 * @return object[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -101,7 +103,7 @@ class PostService implements PostServiceInterface {
 		$firstPost = reset( $posts );
 		if ( $firstPost instanceof WP_Post ) {
 			foreach ( $posts as $post ) {
-				$mappedPost = $this->mapper->mapObjectToObject( $post, PostDto::class );
+				$mappedPost = $this->mapper->mapObjectToObject( $post, $this->model );
 				$postList[] = $mappedPost;
 			}
 

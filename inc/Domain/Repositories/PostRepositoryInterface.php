@@ -4,15 +4,13 @@ namespace PluginName\Domain\Repositories;
 
 defined( 'ABSPATH' ) || exit;
 
-use PluginName\Domain\Entities\Post;
-
 interface PostRepositoryInterface {
 	/**
 	 * Create a new model
 	 *
 	 * @param array $args
 	 *
-	 * @return Post|bool
+	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function create( array $args );
@@ -22,7 +20,7 @@ interface PostRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return Post|bool
+	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function update( array $args );
@@ -43,7 +41,7 @@ interface PostRepositoryInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return Post|bool
+	 * @return bool|object
 	 * @since 1.0.0
 	 */
 	public function get( int $id );
@@ -53,7 +51,7 @@ interface PostRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return array
+	 * @return object[]|bool
 	 * @since 1.0.0
 	 */
 	public function getList( array $args ): array;

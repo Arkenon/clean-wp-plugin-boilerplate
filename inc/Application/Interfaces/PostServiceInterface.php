@@ -8,27 +8,27 @@ use PluginName\Application\DTOs\Post\PostDto;
 
 interface PostServiceInterface {
 	/**
-	 * Create a new DTO for the related model
+	 * Create a new model
 	 *
 	 * @param array $args
 	 *
-	 * @return PostDto|bool
+	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function create( array $args );
 
 	/**
-	 * Update a DTO for the related model
+	 * Update a model
 	 *
 	 * @param array $args
 	 *
-	 * @return PostDto|bool
+	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function update( array $args );
 
 	/**
-	 * Delete a DTO for the related model
+	 * Delete a model
 	 *
 	 * @param int $id
 	 * @param bool $forceDelete
@@ -36,24 +36,24 @@ interface PostServiceInterface {
 	 * @return bool
 	 * @since 1.0.0
 	 */
-	public function delete( int $id, bool $forceDelete = true ): bool;
+	public function delete( int $id, bool $forceDelete = false ): bool;
 
 	/**
-	 * Get a DTO for the related model
+	 * Get a model
 	 *
 	 * @param int $id
 	 *
-	 * @return PostDto|bool
+	 * @return bool|object
 	 * @since 1.0.0
 	 */
 	public function get( int $id );
 
 	/**
-	 * Get a list of DTOs for the related model
+	 * Get a list of models
 	 *
 	 * @param array $args
 	 *
-	 * @return array
+	 * @return object[]|bool
 	 * @since 1.0.0
 	 */
 	public function getList( array $args ): array;

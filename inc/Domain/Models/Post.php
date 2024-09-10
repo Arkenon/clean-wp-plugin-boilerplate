@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginName\Domain\Entities;
+namespace PluginName\Domain\Models;
 
 defined('ABSPATH') || exit;
 
