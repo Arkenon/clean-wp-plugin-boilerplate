@@ -16,20 +16,38 @@
 defined( 'ABSPATH' ) || exit;
 
 use PluginName\App;
+use PluginName\Infrastructure\Services\ActivationService;
+use PluginName\Infrastructure\Services\DeactivationService;
 use PluginName\Persistence\Configurations\DI;
+
 
 if ( is_readable( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
 define( 'PLUGIN_NAME_VERSION', get_file_data( __FILE__, array( 'version' => 'Version' ) )['version'] );
-define( 'PLUGIN_NAME_PLUGIN_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) . '/' );
-define( 'PLUGIN_NAME_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+define( 'PLUGIN_NAME_URL', rtrim( plugin_dir_url( __FILE__ ), '/' ) . '/' );
+define( 'PLUGIN_NAME_PATH', plugin_dir_path( __FILE__ ) );
+
+//Activation
+if ( ! function_exists( 'pluginNameInitActivation' ) ) {
+	function pluginNameInitActivation() {
+		DI::container()->get( ActivationService::class )->activate();
+	}
+
+	register_activation_hook( __FILE__, 'pluginNameInitActivation' );
+}
+
+//Deactivation
+if ( ! function_exists( 'pluginNameInitDeactivation' ) ) {
+	function pluginNameInitDeactivation() {
+		DI::container()->get( DeactivationService::class )->deactivate();
+	}
+
+	register_deactivation_hook( __FILE__, 'pluginNameInitDeactivation' );
+}
 
 //Run plugin
 if ( class_exists( App::class ) ) {
 	DI::container()->get( App::class )->run();
 }
-
-/*$data = DI::container()->get(\PluginName\Presentation\Controllers\TaxonomyController::class)->delete();
-print_r($data);*/

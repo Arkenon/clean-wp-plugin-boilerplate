@@ -6,6 +6,12 @@ This boilerplate is based on [Wordpress Create Block](https://developer.wordpres
 
 It supports block development with React, ESNext, and JSX compilation.
 
+Especially for developers who want to create a plugin with clean architecture and clean code.
+
+It is not useful for simple and small projects.
+
+You can use this boilerplate for large projects includes multiple post types, custom fields, custom taxonomies and more.
+
 ## Installation
 
 The Boilerplate can be installed directly into your plugins folder.
@@ -16,6 +22,7 @@ Then follow these steps:
 * change `plugin-name` to `example-me`
 * change `Plugin_Name` to `Example_Me`
 * change `PLUGIN_NAME` to `EXAMPLE_ME`
+* change `pluginName` to `exampleMe`
 
 
 * Install composer dependencies `composer update`
@@ -81,5 +88,3 @@ Created by Kadim Gültekin
 
 * https://github.com/Arkenon
 * https://www.linkedin.com/in/kadim-gültekin-86320a198/
-
-

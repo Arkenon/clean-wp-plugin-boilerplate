@@ -38,7 +38,7 @@ class ComposerStaticInitf859de02b9673142097baa55e3643c5c
         ),
         'PluginName\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/inc',
+            0 => __DIR__ . '/../..' . '/includes',
         ),
         'PhpDocReader\\' => 
         array (
