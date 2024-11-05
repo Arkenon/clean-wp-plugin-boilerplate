@@ -2,6 +2,7 @@
 /**
  * Mapper class
  * This class is responsible for mapping objects to other objects, arrays, etc.
+ * Supports generic types
  * @package PluginName
  * @subpackage PluginName\Common\Services
  */
@@ -16,14 +17,16 @@ class Mapper {
 	/**
 	 * Maps an object to another object
 	 *
-	 * @param $source
-	 * @param $destination
+	 * @template TModel (for generic type)
 	 *
+	 * @param object $source The source object to map from
+	 * @param class-string<TModel>|TModel $destination The destination class or object
+	 *
+	 * @psalm-return TModel
 	 * @return object
 	 * @throws ReflectionException
-	 * @since 1.0.0
 	 */
-	public function mapObjectToObject( $source, $destination ): object {
+	public function mapObjectToObject( object $source, $destination ): object {
 		$sourceReflection      = ( new Mapper )->getReflectionClass( $source );
 		$destinationReflection = ( new Mapper )->getReflectionClass( $destination );
 
@@ -47,13 +50,13 @@ class Mapper {
 	/**
 	 * Maps an object to an array
 	 *
-	 * @param $source
+	 * @param object $source
 	 *
 	 * @return array
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
-	public function mapObjectToArray( $source ): array {
+	public function mapObjectToArray( object $source ): array {
 		if ( ! is_object( $source ) ) {
 			return [];
 		}
@@ -73,12 +76,14 @@ class Mapper {
 	/**
 	 * Maps an array to an object
 	 *
-	 * @param array $source
-	 * @param $destination
+	 * @template TModel (for generic type)
 	 *
+	 * @param array $source The source array to map from
+	 * @param class-string<TModel>|TModel $destination The destination class or object
+	 *
+	 * @psalm-return TModel
 	 * @return object
 	 * @throws ReflectionException
-	 * @since 1.0.0
 	 */
 	public function mapArrayToObject( array $source, $destination ): object {
 		$reflection = ( new Mapper )->getReflectionClass( $destination );
@@ -99,7 +104,7 @@ class Mapper {
 	/**
 	 * Returns an instance of ReflectionClass
 	 *
-	 * @param $class
+	 * @param string|object $class
 	 *
 	 * @return ReflectionClass
 	 * @throws ReflectionException
@@ -112,7 +117,7 @@ class Mapper {
 	/**
 	 * Returns an instance of the class
 	 *
-	 * @param $class
+	 * @param string|object $class
 	 *
 	 * @return object
 	 * @throws ReflectionException

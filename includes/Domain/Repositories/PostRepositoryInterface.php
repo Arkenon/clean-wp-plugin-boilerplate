@@ -14,27 +14,34 @@ defined( 'ABSPATH' ) || exit;
 interface PostRepositoryInterface {
 
 	/**
-	 * Create a new model
+	 * @template TModel
+	 *
+	 * Create a new model (Post, Page, Custom Post Type)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function create( array $args );
 
 	/**
-	 * Update a model
+	 * @template TModel
+	 *
+	 * Update a model (Post, Page, Custom Post Type)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function update( array $args );
 
 	/**
-	 * Delete a model
+	 *
+	 * Delete a model (Post, Page, Custom Post Type)
 	 *
 	 * @param int $id
 	 * @param bool $forceDelete
@@ -45,20 +52,26 @@ interface PostRepositoryInterface {
 	public function delete( int $id, bool $forceDelete = false ): bool;
 
 	/**
-	 * Get a model
+	 * @template TModel
+	 *
+	 * Get a model (Post, Page, Custom Post Type)
 	 *
 	 * @param int $id
 	 *
+	 * @psalm-return TModel|bool
 	 * @return bool|object
 	 * @since 1.0.0
 	 */
 	public function get( int $id );
 
 	/**
-	 * Get a list of models
+	 * @template TModel
+	 *
+	 * Get a list of models (Posts, Pages, Custom Post Types)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel[]|bool
 	 * @return object[]|bool
 	 * @since 1.0.0
 	 */

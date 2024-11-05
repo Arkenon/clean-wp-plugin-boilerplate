@@ -11,6 +11,8 @@
 
 namespace PluginName\Application\Interfaces;
 
+use PluginName\Application\DTOs\Comment\CommentDto;
+
 defined( 'ABSPATH' ) || exit;
 
 interface CommentServiceInterface {
@@ -19,7 +21,7 @@ interface CommentServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return CommentDto|bool
 	 * @since 1.0.0
 	 */
 	public function create( array $args );
@@ -29,7 +31,7 @@ interface CommentServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return CommentDto|bool
 	 * @since 1.0.0
 	 */
 	public function update( array $args );
@@ -50,7 +52,7 @@ interface CommentServiceInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return object|bool
+	 * @return CommentDto|bool
 	 * @since 1.0.0
 	 */
 	public function get( int $id );
@@ -60,7 +62,7 @@ interface CommentServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object[]|bool
+	 * @return CommentDto[]|bool
 	 * @since 1.0.0
 	 */
 	public function getList( array $args );

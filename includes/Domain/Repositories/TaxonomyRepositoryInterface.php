@@ -13,7 +13,9 @@ defined( 'ABSPATH' ) || exit;
 
 interface TaxonomyRepositoryInterface {
 	/**
-	 * Create a new model
+	 * @template TModel
+	 *
+	 * Create a new model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param string $term
 	 * @param string $taxonomy
@@ -25,19 +27,22 @@ interface TaxonomyRepositoryInterface {
 	public function create( string $term, string $taxonomy, array $args = [] );
 
 	/**
-	 * Update a model
+	 * @template TModel
+	 *
+	 * Update a model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function update( int $term_id, string $taxonomy, array $args = [] );
 
 	/**
-	 * Delete a model
+	 * Delete a model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
@@ -49,21 +54,27 @@ interface TaxonomyRepositoryInterface {
 	public function delete( int $term_id, string $taxonomy, array $args = [] ): bool;
 
 	/**
-	 * Get a model
+	 * @template TModel
+	 *
+	 * Get a model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $id
 	 * @param string $taxonomy
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function get( int $id, string $taxonomy = '' );
 
 	/**
-	 * Get a list of models
+	 * @template TModel
+	 *
+	 * Get a list of models (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel[]|bool
 	 * @return object[]|bool
 	 * @since 1.0.0
 	 */

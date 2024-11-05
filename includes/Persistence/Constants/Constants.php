@@ -12,7 +12,7 @@ namespace PluginName\Persistence\Constants;
 defined( 'ABSPATH' ) || exit;
 
 class Constants {
-	const NAME = 'plugin-name';
+	public const NAME = 'plugin_name';
 	public const INCLUDES_PATH = PLUGIN_NAME_PATH . 'includes/';
 	public const INCLUDES_URL = PLUGIN_NAME_URL . '/includes/';
 	public const AUTHOR = 'Kadim Gültekin';

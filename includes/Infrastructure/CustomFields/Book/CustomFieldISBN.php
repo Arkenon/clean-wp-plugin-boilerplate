@@ -49,7 +49,7 @@ class CustomFieldISBN extends CustomFieldBuilder {
 		echo wp_kses( $html, $allowed_html );
 	}
 
-	public function saveMetaBox( $post_id ): void {
+	public function saveMetaBox( int $post_id ): void {
 		if ( ! $this->verifyNonce() || ! $this->canSaveData() ) {
 			return;
 		}

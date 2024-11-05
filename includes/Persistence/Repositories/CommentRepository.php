@@ -30,7 +30,7 @@ class CommentRepository implements CommentRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return Comment|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -49,7 +49,7 @@ class CommentRepository implements CommentRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return Comment|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -81,7 +81,7 @@ class CommentRepository implements CommentRepositoryInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return object|bool
+	 * @return Comment|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -100,7 +100,7 @@ class CommentRepository implements CommentRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object[]|bool
+	 * @return Comment[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */

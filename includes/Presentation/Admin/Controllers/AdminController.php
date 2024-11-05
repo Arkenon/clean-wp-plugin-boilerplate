@@ -14,7 +14,7 @@ use PluginName\Persistence\Constants\Constants;
 
 defined( 'ABSPATH' ) || exit;
 
-class AdminController {
+final class AdminController {
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueueScripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueueStyles' ] );

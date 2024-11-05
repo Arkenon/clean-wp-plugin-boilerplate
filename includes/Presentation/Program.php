@@ -17,7 +17,7 @@ use PluginName\Presentation\Admin\Controllers\AdminController;
 use PluginName\Presentation\Client\Controllers\BookController;
 use PluginName\Presentation\Client\Controllers\ClientController;
 
-class Program {
+final class Program {
 
 	/**
 	 * List of controllers to be initialized

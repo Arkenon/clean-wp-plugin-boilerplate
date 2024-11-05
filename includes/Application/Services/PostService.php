@@ -32,10 +32,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
-	 *  Create a DTO for the related model
+	 * @template TModel
+	 *
+	 *  Create a DTO for the related model (Post, Page, Custom Post Type)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -51,10 +54,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
-	 * Update a DTO for the related model
+	 * @template TModel
+	 *
+	 * Update a DTO for the related model (Post, Page, Custom Post Type)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -70,7 +76,7 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
-	 * Delete the related model
+	 * Delete the related model (Post, Page, Custom Post Type)
 	 *
 	 * @param int $id
 	 * @param bool $forceDelete
@@ -83,10 +89,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
-	 * Get a DTO for the related model
+	 * @template TModel
+	 *
+	 * Get a DTO for the related model (Post, Page, Custom Post Type)
 	 *
 	 * @param int $id
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -102,10 +111,13 @@ class PostService implements PostServiceInterface {
 	}
 
 	/**
-	 * Get a list of DTOs for the related model
+	 * @template TModel
+	 *
+	 * Get a list of DTOs for the related model (Posts, Pages, Custom Post Types)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel[]|bool
 	 * @return object[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0

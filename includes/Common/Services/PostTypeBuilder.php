@@ -23,6 +23,23 @@ class PostTypeBuilder {
 	}
 
 	/**
+	 * Register the post type
+	 *
+	 * @return void
+	 * @since 1.0.0
+	 */
+	public function register(): void {
+		if ( ! empty( $this->labels ) ) {
+			$this->args['labels'] = $this->labels;
+		}
+
+		if ( ! post_type_exists( $this->post_type ) ) {
+			register_post_type( $this->post_type, $this->args );
+			flush_rewrite_rules();
+		}
+	}
+
+	/**
 	 * Set the post type arguments
 	 *
 	 * @param array $args
@@ -48,22 +65,5 @@ class PostTypeBuilder {
 		$this->labels = $labels;
 
 		return $this;
-	}
-
-	/**
-	 * Register the post type
-	 *
-	 * @return void
-	 * @since 1.0.0
-	 */
-	public function register(): void {
-		if ( ! empty( $this->labels ) ) {
-			$this->args['labels'] = $this->labels;
-		}
-
-		if ( ! post_type_exists( $this->post_type ) ) {
-			register_post_type( $this->post_type, $this->args );
-			flush_rewrite_rules();
-		}
 	}
 }

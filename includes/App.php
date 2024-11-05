@@ -22,7 +22,7 @@ use PluginName\Presentation\Program;
 
 defined( 'ABSPATH' ) || exit;
 
-class App {
+final class App {
 
 	/**
 	 * List of services to be initialized

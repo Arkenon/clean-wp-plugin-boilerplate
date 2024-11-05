@@ -31,7 +31,7 @@ class UserRepository implements UserRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return User|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -50,7 +50,7 @@ class UserRepository implements UserRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return User|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -82,7 +82,7 @@ class UserRepository implements UserRepositoryInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return bool|object
+	 * @return bool|User
 	 * @throws ReflectionException
 	 */
 	public function get( int $id ) {
@@ -100,7 +100,7 @@ class UserRepository implements UserRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object[]|bool
+	 * @return User[]|bool
 	 * @throws ReflectionException
 	 */
 	public function getList( array $args ): array {

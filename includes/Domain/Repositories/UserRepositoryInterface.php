@@ -9,6 +9,8 @@
 
 namespace PluginName\Domain\Repositories;
 
+use PluginName\Domain\Models\User;
+
 defined( 'ABSPATH' ) || exit;
 
 interface UserRepositoryInterface {
@@ -17,7 +19,7 @@ interface UserRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return User|bool
 	 * @since 1.0.0
 	 */
 	public function create( array $args );
@@ -27,7 +29,7 @@ interface UserRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return User|bool
 	 * @since 1.0.0
 	 */
 	public function update( array $args );
@@ -48,7 +50,7 @@ interface UserRepositoryInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return object|bool
+	 * @return User|bool
 	 * @since 1.0.0
 	 */
 	public function get( int $id );
@@ -58,7 +60,7 @@ interface UserRepositoryInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object[]|bool
+	 * @return User[]|bool
 	 * @since 1.0.0
 	 */
 	public function getList( array $args ): array;

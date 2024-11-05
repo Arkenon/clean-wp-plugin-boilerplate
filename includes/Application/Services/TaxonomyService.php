@@ -32,12 +32,15 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
-	 * Create a new DTO for a related model
+	 * @template TModel
+	 *
+	 * Create a new DTO for a related model (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param string $term
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -53,12 +56,15 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
-	 * Update a DTO for a related model
+	 * @template TModel
+	 *
+	 * Update a DTO for a related model (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -74,7 +80,7 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
-	 * Delete the related model
+	 * Delete the related model (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
@@ -88,9 +94,14 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
+	 * @template TModel
+	 *
+	 * Get a DTO for a related model (Taxonomies, Custom Taxonomies)
+	 *
 	 * @param int $id
 	 * @param string $taxonomy
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 */
@@ -105,10 +116,13 @@ class TaxonomyService implements TaxonomyServiceInterface {
 	}
 
 	/**
-	 * Get a list of DTOs for a related model
+	 * @template TModel
+	 *
+	 * Get a list of DTOs for a related model (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel[]|bool
 	 * @return object[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0

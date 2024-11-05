@@ -15,6 +15,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+use DI\DependencyException;
+use DI\NotFoundException;
 use PluginName\App;
 use PluginName\Infrastructure\Services\ActivationService;
 use PluginName\Infrastructure\Services\DeactivationService;
@@ -31,6 +33,11 @@ define( 'PLUGIN_NAME_PATH', plugin_dir_path( __FILE__ ) );
 
 //Activation
 if ( ! function_exists( 'pluginNameInitActivation' ) ) {
+	/**
+	 * @throws DependencyException
+	 * @throws NotFoundException
+	 * @throws Exception
+	 */
 	function pluginNameInitActivation() {
 		DI::container()->get( ActivationService::class )->activate();
 	}
@@ -40,6 +47,11 @@ if ( ! function_exists( 'pluginNameInitActivation' ) ) {
 
 //Deactivation
 if ( ! function_exists( 'pluginNameInitDeactivation' ) ) {
+	/**
+	 * @throws DependencyException
+	 * @throws NotFoundException
+	 * @throws Exception
+	 */
 	function pluginNameInitDeactivation() {
 		DI::container()->get( DeactivationService::class )->deactivate();
 	}
@@ -49,5 +61,14 @@ if ( ! function_exists( 'pluginNameInitDeactivation' ) ) {
 
 //Run plugin
 if ( class_exists( App::class ) ) {
-	DI::container()->get( App::class )->run();
+	/**
+	 * @throws DependencyException
+	 * @throws NotFoundException
+	 * @throws Exception
+	 */
+	try {
+		DI::container()->get( App::class )->run();
+	} catch ( DependencyException | Exception $e ) {
+		wp_die( $e->getMessage() );
+	}
 }

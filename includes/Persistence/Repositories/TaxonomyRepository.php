@@ -29,12 +29,15 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
-	 * Create a new model
+	 * @template TModel
+	 *
+	 * Create a new model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param string $term
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -51,12 +54,15 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
-	 * Update a model
+	 * @template TModel
+	 *
+	 * Update a model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -72,7 +78,7 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
-	 * Delete a model
+	 * Delete a model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
@@ -92,11 +98,14 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
-	 * Get a model
+	 * @template TModel
+	 *
+	 * Get a model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $id
 	 * @param string $taxonomy
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -116,11 +125,14 @@ class TaxonomyRepository implements TaxonomyRepositoryInterface {
 	}
 
 	/**
-	 * Get a list of models
+	 * @template TModel
+	 *
+	 * Get a list of models (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param array $args
 	 *
-	 * @return array|bool
+	 * @psalm-return TModel[]|bool
+	 * @return object[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */

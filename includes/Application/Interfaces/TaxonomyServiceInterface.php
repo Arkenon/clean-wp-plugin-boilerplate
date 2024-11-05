@@ -15,31 +15,37 @@ defined( 'ABSPATH' ) || exit;
 
 interface TaxonomyServiceInterface {
 	/**
-	 * Create a new DTO for the related model
+	 * @template TModel
+	 *
+	 * Create a new DTO for the related model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param string $term
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function create( string $term, string $taxonomy, array $args = [] );
 
 	/**
-	 * Update a DTO for the related model
+	 * @template TModel
+	 *
+	 * Update a DTO for the related model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function update( int $term_id, string $taxonomy, array $args = [] );
 
 	/**
-	 * Delete a DTO for the related model
+	 * Delete a DTO for the related model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $term_id
 	 * @param string $taxonomy
@@ -51,21 +57,27 @@ interface TaxonomyServiceInterface {
 	public function delete( int $term_id, string $taxonomy, array $args = [] ): bool;
 
 	/**
-	 * Get a DTO for the related model
+	 * @template TModel
+	 *
+	 * Get a DTO for the related model (Taxonomy, Custom Taxonomy)
 	 *
 	 * @param int $id
 	 * @param string $taxonomy
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @since 1.0.0
 	 */
 	public function get( int $id, string $taxonomy = '' );
 
 	/**
-	 * Get a list of DTOs for the related model
+	 * @template TModel
+	 *
+	 * Get a list of DTOs for the related model (Taxonomies, Custom Taxonomies)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel[]|bool
 	 * @return object[]|bool
 	 * @since 1.0.0
 	 */

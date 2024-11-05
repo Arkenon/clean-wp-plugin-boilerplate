@@ -29,10 +29,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
-	 * Create a new model
+	 * @template TModel
+	 *
+	 * Create a new model (Post, Page, Custom Post Type)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -48,10 +51,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
-	 * Update a model
+	 * @template TModel
+	 *
+	 * Update a model (Post, Page, Custom Post Type)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel|bool
 	 * @return object|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
@@ -67,7 +73,7 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
-	 * Delete a model
+	 * Delete a model (Post, Page, Custom Post Type)
 	 *
 	 * @param int $id
 	 * @param bool $forceDelete
@@ -88,10 +94,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
-	 * Get a model
+	 * @template TModel
+	 *
+	 * Get a model (Post, Page, Custom Post Type)
 	 *
 	 * @param int $id
 	 *
+	 * @psalm-return TModel|bool
 	 * @return bool|object
 	 * @throws ReflectionException
 	 */
@@ -106,10 +115,13 @@ class PostRepository implements PostRepositoryInterface {
 	}
 
 	/**
-	 * Get a list of models
+	 * @template TModel
+	 *
+	 * Get a list of models (Posts, Pages, Custom Post Types)
 	 *
 	 * @param array $args
 	 *
+	 * @psalm-return TModel[]|bool
 	 * @return object[]|bool
 	 * @throws ReflectionException
 	 */

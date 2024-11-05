@@ -25,6 +25,21 @@ class TaxonomyBuilder {
 	}
 
 	/**
+	 * Register the taxonomy
+	 * @return void
+	 * @since 1.0.0
+	 */
+	public function register(): void {
+		if ( ! empty( $this->labels ) ) {
+			$this->args['labels'] = $this->labels;
+		}
+
+		if ( ! taxonomy_exists( $this->taxonomy ) ) {
+			register_taxonomy( $this->taxonomy, $this->object_type, $this->args );
+		}
+	}
+
+	/**
 	 * Set the taxonomy arguments
 	 *
 	 * @param array $args
@@ -50,20 +65,5 @@ class TaxonomyBuilder {
 		$this->labels = $labels;
 
 		return $this;
-	}
-
-	/**
-	 * Register the taxonomy
-	 * @return void
-	 * @since 1.0.0
-	 */
-	public function register(): void {
-		if ( ! empty( $this->labels ) ) {
-			$this->args['labels'] = $this->labels;
-		}
-
-		if ( ! taxonomy_exists( $this->taxonomy ) ) {
-			register_taxonomy( $this->taxonomy, $this->object_type, $this->args );
-		}
 	}
 }

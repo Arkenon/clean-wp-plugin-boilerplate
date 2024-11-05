@@ -34,7 +34,7 @@ class UserService implements UserServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return UserDto|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -53,7 +53,7 @@ class UserService implements UserServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return UserDto|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -85,7 +85,7 @@ class UserService implements UserServiceInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return object|bool
+	 * @return UserDto|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -104,7 +104,7 @@ class UserService implements UserServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object[]|bool
+	 * @return UserDto[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -122,9 +122,5 @@ class UserService implements UserServiceInterface {
 		}
 
 		return $userList;
-	}
-
-	public function getUserData(): array {
-		return $this->repository->getUserData();
 	}
 }

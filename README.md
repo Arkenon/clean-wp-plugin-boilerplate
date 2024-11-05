@@ -23,6 +23,7 @@ Then follow these steps:
 * change `Plugin_Name` to `Example_Me`
 * change `PLUGIN_NAME` to `EXAMPLE_ME`
 * change `pluginName` to `exampleMe`
+* change `plugin.php` to `example-me.php`
 
 
 * Install composer dependencies `composer update`

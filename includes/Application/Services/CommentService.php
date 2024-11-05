@@ -34,7 +34,7 @@ class CommentService implements CommentServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return CommentDto|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -53,7 +53,7 @@ class CommentService implements CommentServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object|bool
+	 * @return CommentDto|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -85,7 +85,7 @@ class CommentService implements CommentServiceInterface {
 	 *
 	 * @param int $id
 	 *
-	 * @return object|bool
+	 * @return CommentDto|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
@@ -105,7 +105,7 @@ class CommentService implements CommentServiceInterface {
 	 *
 	 * @param array $args
 	 *
-	 * @return object[]|bool
+	 * @return CommentDto[]|bool
 	 * @throws ReflectionException
 	 * @since 1.0.0
 	 */
