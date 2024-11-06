@@ -19,6 +19,7 @@ final class AdminController {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueueScripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueueStyles' ] );
 		add_action( 'admin_menu', [ $this, 'addMenu' ] );
+		add_action( 'admin_init', [ $this, 'registerOptions' ] );
 	}
 
 	/**
@@ -58,6 +59,21 @@ final class AdminController {
 	}
 
 	/**
+	 * Register options for the dashboard page
+	 * @return void
+	 * @since    1.0.0
+	 */
+	public function registerOptions(): void {
+
+		// Register option 1
+		register_setting( 'plugin-name-settings-group', 'plugin_name_settings_one' );
+
+		// Register option 2
+		register_setting( 'plugin-name-settings-group', 'plugin_name_settings_two' );
+
+	}
+
+	/**
 	 * Render HTML output for dashboard
 	 * @return void
 	 * @since 1.0.0
@@ -66,7 +82,7 @@ final class AdminController {
 		ob_start();
 		try {
 			include Constants::INCLUDES_PATH . 'Presentation/Admin/Views/admin-menu-content.php';
-			echo wp_kses_post( ob_get_clean() );
+			echo ob_get_clean();
 		} catch ( Exception $e ) {
 			ob_end_clean();
 		}

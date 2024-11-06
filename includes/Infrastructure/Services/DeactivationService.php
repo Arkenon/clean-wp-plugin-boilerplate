@@ -2,7 +2,7 @@
 /**
  * Activation service class for the plugin
  * @package PluginName
- * @subpackage PluginName\Infrastructure\Services
+ * @subpackage Infrastructure\Services
  * @since 1.0.0
  */
 

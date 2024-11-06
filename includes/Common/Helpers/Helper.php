@@ -1,4 +1,11 @@
 <?php
+/**
+ * Helper class for common functions
+ *
+ * @package PluginName
+ * @subpackage Common\Helpers
+ * @since 1.0.0
+ */
 
 namespace PluginName\Common\Helpers;
 

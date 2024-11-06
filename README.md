@@ -12,6 +12,8 @@ It is not useful for simple and small projects.
 
 You can use this boilerplate for large projects includes multiple post types, custom fields, custom taxonomies and more.
 
+If you need a simple plugin, you can use [[Light Wp Plugin Boilerplate](https://github.com/Arkenon/light-wp-plugin-boilerplate)]
+
 ## Installation
 
 The Boilerplate can be installed directly into your plugins folder.
