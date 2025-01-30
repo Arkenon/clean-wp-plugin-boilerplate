@@ -18,20 +18,19 @@ use PluginName\Infrastructure\Services\MailService;
 use PluginName\Infrastructure\Services\PostTypeService;
 use PluginName\Infrastructure\Services\TaxonomyService;
 use PluginName\Persistence\Configurations\DI;
-use PluginName\Presentation\Program;
+use PluginName\Presentation\ControllerInit;
 
 defined( 'ABSPATH' ) || exit;
 
 final class App {
 
 	/**
-	 * List of services to be initialized
+	 * List of services to be initialized on 'plugins_loaded' action
 	 * @var array
 	 * @since 1.0.0
 	 */
-	private array $services = [
+	private array $pluginsLoaded = [
 		BlockService::class,
-		i18nService::class,
 		PostTypeService::class,
 		TaxonomyService::class,
 		CustomFieldService::class,
@@ -39,13 +38,23 @@ final class App {
 	];
 
 	/**
-	 * Include Presentation layer base class - Program.php
+	 * List of services to be initialized on 'init' action
+	 * Made required with WordPress 6.7
+	 * @var array
+	 * @since 1.0.0
+	 */
+	private array $init = [
+		i18nService::class,
+	];
+
+	/**
+	 * Include Presentation layer base class - ControllerInit.php
 	 * Contains all controllers
 	 * @var array
 	 * @since 1.0.0
 	 */
-	private array $program = [
-		Program::class
+	private array $controllerInit = [
+		ControllerInit::class
 	];
 
 	/**
@@ -54,30 +63,39 @@ final class App {
 	 * @since 1.0.0
 	 */
 	public function run(): void {
-		//Init all services and controllers on plugins_loaded hook
+		//Services
+		add_action( 'init', [ $this, 'coreInit' ] );
 		add_action( 'plugins_loaded', [ $this, 'initPluginServices' ] );
 	}
 
 	/**
 	 * Initialize all services and controllers
-	 * @return void
+	 * @throws DependencyException
 	 * @throws NotFoundException
 	 * @throws Exception
-	 * @throws DependencyException
 	 * @since 1.0.0
 	 */
-	public function initPluginServices(): void {
-
+	public function initPluginServices() {
 		//Define a hook runs before initializing the plugin
-		do_action( 'plugin_name_before_init' );
+		do_action( 'plugin_name_after_init' );
 
-		$services_and_controllers = array_merge( $this->services, $this->program );
+		$classes = array_merge( $this->pluginsLoaded, $this->controllerInit );
 
-		foreach ( $services_and_controllers as $item ) {
-			DI::container()->get( $item );
+		foreach ( $classes as $class ) {
+			DI::container()->get( $class );
 		}
 		//Define a hook runs after initializing the plugin
 		do_action( 'plugin_name_after_init' );
+	}
 
+	/**
+	 * @throws DependencyException
+	 * @throws NotFoundException
+	 * @throws Exception
+	 */
+	public function coreInit() {
+		foreach ( $this->init as $class ) {
+			DI::container()->get( $class );
+		}
 	}
 }

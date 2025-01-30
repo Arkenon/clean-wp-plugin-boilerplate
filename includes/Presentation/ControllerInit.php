@@ -17,15 +17,23 @@ use PluginName\Presentation\Admin\Controllers\AdminController;
 use PluginName\Presentation\Client\Controllers\BookController;
 use PluginName\Presentation\Client\Controllers\ClientController;
 
-final class Program {
+final class ControllerInit {
 
 	/**
-	 * List of controllers to be initialized
+	 * List of controllers to be initialized for Admin
 	 * @var array
 	 * @since 1.0.0
 	 */
-	private array $controllers = [
+	private array $adminControllers =  [
 		AdminController::class,
+	];
+
+	/**
+	 * List of controllers to be initialized for Client
+	 * @var array
+	 * @since 1.0.0
+	 */
+	private array $clientControllers  = [
 		ClientController::class,
 		BookController::class
 	];
@@ -46,7 +54,15 @@ final class Program {
 	 * @since 1.0.0
 	 */
 	public function initControllers() {
-		foreach ( $this->controllers as $controller ) {
+		// Initialize controllers for admin area
+		if ( is_admin() ) {
+			foreach ( $this->adminControllers as $controller ) {
+				DI::container()->get( $controller );
+			}
+		}
+
+		// Initialize controllers for client area
+		foreach ( $this->clientControllers as $controller ) {
 			DI::container()->get( $controller );
 		}
 	}
