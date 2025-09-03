@@ -25,6 +25,7 @@ Then follow these steps:
 * change `plugin_name` to `example_me`
 * change `plugin-name` to `example-me`
 * change `Plugin_Name` to `Example_Me`
+* change `PluginName` to `ExampleMe`
 * change `PLUGIN_NAME` to `EXAMPLE_ME`
 * change `pluginName` to `exampleMe`
 * change `plugin.php` to `example-me.php`
@@ -244,6 +245,55 @@ Persistence Layer (Database, WP API Wrappers)
 4. **Object Mapping**: Automatic mapping between domain models and DTOs
 5. **Clean Separation**: Each layer with its own responsibility, loose coupling
 6. **WordPress Integration**: Clean interface with native WP APIs
+
+
+## Generic Prompt for AI Assistants
+
+You must use the **clean-wp-plugin-boilerplate** for developing this WordPress plugin.  
+This boilerplate is based on WordPress Create Block and Clean Architecture principles,
+and it enforces a layered, maintainable structure.
+
+⚙️ Key rules:
+- Always respect the boilerplate’s folder structure and layer responsibilities:
+    - **Application Layer** → DTOs, Service Interfaces, Use Cases
+    - **Domain Layer** → Entities (Models), Repository Interfaces
+    - **Infrastructure Layer** → WordPress-specific implementations (Post Types, Taxonomies, Custom Fields, BlockService, Services)
+    - **Persistence Layer** → Repository implementations, DI container config, Constants
+    - **Presentation Layer** → Admin & Client controllers, Views, Assets (CSS/JS)
+    - **Common Layer** → Shared utilities, builders, helpers
+- Use **PHP-DI** for dependency injection. All services and repositories must be bound in `Persistence/Configurations/DI.php`.
+- Apply **Clean Architecture dependency flow**:
+  `Presentation → Application → Domain ← Infrastructure ← Persistence`
+- Business logic belongs in the **Application Layer Services**, never in controllers or repositories.
+- Use **DTOs** for data transfer instead of raw WP objects/arrays.
+- Use **Repository Interfaces** in the Domain Layer, implemented in the Persistence Layer.
+- Register Post Types, Taxonomies, and Custom Fields only via the **Infrastructure Layer** (builders and service classes).
+- For Gutenberg blocks:
+    - Place React/JSX code in `/src`
+    - Build with `npm run build`
+    - Register via `includes/Infrastructure/Services/BlockService.php`
+    - 
+- Always follow the naming convention:  
+`plugin_name` for variables
+`plugin-name` for file names, folder names, slugs and text domains
+`PluginName` for class names and namespaces
+`PLUGIN_NAME`for constants and defines
+`pluginName` for JS variables, method and function names
+
+🛠 Development workflow:
+1. Clone the repository from `https://github.com/Arkenon/clean-wp-plugin-boilerplate.git`  
+   OR download all files as `.zip` and upload them manually to your project.
+2. Install composer dependencies: `composer update`
+3. Install npm dependencies: `npm i`
+4. Update packages: `npm run packages-update`
+5. Use `npm start` for development (watch mode)
+6. Use `npm run build` for production
+7. Register new blocks inside `BlockService.php` using `register_block_type`
+8. Follow **GPL v2 or later** license compatibility
+
+Your task: When I describe a feature, requirement, or entity, implement it strictly within this boilerplate’s architecture,
+ensuring clean code, separation of concerns, and WordPress best practices.
+
 
 ## Recommended Tools
 
