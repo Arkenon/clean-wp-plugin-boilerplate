@@ -43,7 +43,7 @@ Then follow these steps:
 * Start plugin `npm start`
 
 
-* Build for production `npm build`
+* Build for production `npm run build`
 
 ## How to Register Blocks?
 
@@ -280,16 +280,20 @@ and it enforces a layered, maintainable structure.
 `PLUGIN_NAME`for constants and defines
 `pluginName` for JS variables, method and function names
 
+- Always use translation functions `__()` and `_e()` with the text domain `plugin-name`.
+- Always sanitize inputs with appropriate `sanitize_*` functions and escape outputs with `esc_*` functions.
+- Use nonces and capability checks for security in admin actions.
+- Check user permissions with `current_user_can()` before sensitive operations.
+- Optimize performance by minimizing database queries, using transients for caching, and loading assets conditionally
+- Follow WordPress coding standards and PSR-4 autoloading.
+
 🛠 Development workflow:
-1. Clone the repository from `https://github.com/Arkenon/clean-wp-plugin-boilerplate.git`  
-   OR download all files as `.zip` and upload them manually to your project.
-2. Install composer dependencies: `composer update`
-3. Install npm dependencies: `npm i`
-4. Update packages: `npm run packages-update`
-5. Use `npm start` for development (watch mode)
-6. Use `npm run build` for production
-7. Register new blocks inside `BlockService.php` using `register_block_type`
-8. Follow **GPL v2 or later** license compatibility
+1. Install composer dependencies: `composer update`
+2. Install npm dependencies: `npm i`
+3. Update packages: `npm run packages-update`
+4. Use `npm start` for development (watch mode)
+5. Use `npm run build` for production
+6. Follow **GPL v2 or later** license compatibility
 
 Your task: When I describe a feature, requirement, or entity, implement it strictly within this boilerplate’s architecture,
 ensuring clean code, separation of concerns, and WordPress best practices.
