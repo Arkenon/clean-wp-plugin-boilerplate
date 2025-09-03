@@ -16,6 +16,8 @@ If you need a simple plugin, you can use [[Light Wp Plugin Boilerplate](https://
 
 ## Installation
 
+Clone the repository from https://github.com/Arkenon/clean-wp-plugin-boilerplate.git OR download all files as .zip and upload them manually to your project.
+
 The Boilerplate can be installed directly into your plugins folder.
 
 Then follow these steps:
