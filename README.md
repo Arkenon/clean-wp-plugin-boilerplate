@@ -280,6 +280,14 @@ and it enforces a layered, maintainable structure.
 `PLUGIN_NAME`for constants and defines
 `pluginName` for JS variables, method and function names
 
+- Extend post types from the base Post model in the Domain Layer. (Post.php)
+- Extend taxonomy models from the base Taxonomy model in the Domain Layer. (Taxonomy.php)
+- Do not need to use properties suc as $name, $title, $content, $description in post type model. Already defined in the base Post model.
+- Do not need to use properties such as $name, $slug, $description in taxonomy model. Already defined in the base Taxonomy model.
+- Always add defined( 'ABSPATH' ) || exit; after namespace section of PHP files.
+- Always document classes and methods/functions at the top of the class (class PhpDoc must include @package, @subpackage, @since tags).
+- Always use translation functions `__()` and `_e()` with the text domain `plugin-name`.
+- Always sanitize inputs with appropriate `sanitize_*` functions and escape outputs with `esc_*` functions. (Sanitize first, escape later. Always validate.)
 - Always use translation functions `__()` and `_e()` with the text domain `plugin-name`.
 - Always sanitize inputs with appropriate `sanitize_*` functions and escape outputs with `esc_*` functions.
 - Use nonces and capability checks for security in admin actions.
