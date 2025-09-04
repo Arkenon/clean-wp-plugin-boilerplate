@@ -11,7 +11,7 @@ namespace PluginName\Infrastructure\CustomFields\Book;
 defined( 'ABSPATH' ) || exit;
 
 use PluginName\Common\Helpers\Helper;
-use PluginName\Common\Services\CustomFieldBuilder;
+use PluginName\Common\Tools\CustomFieldBuilder;
 use PluginName\Infrastructure\PostTypes\PostTypeBook;
 
 class CustomFieldISBN extends CustomFieldBuilder {

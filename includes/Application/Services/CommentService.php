@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 use PluginName\Application\DTOs\Comment\CommentDto;
 use PluginName\Application\Interfaces\CommentServiceInterface;
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Repositories\CommentRepositoryInterface;
 use ReflectionException;
 

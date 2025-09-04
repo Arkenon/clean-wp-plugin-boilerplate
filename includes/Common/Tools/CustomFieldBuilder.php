@@ -3,11 +3,11 @@
  * Custom Field Builder class
  * This class is responsible for creating custom fields in the WordPress admin area.
  * @package PluginName
- * @subpackage PluginName\Common\Services
+ * @subpackage PluginName\Common\Tools
  * @since 1.0.0
  */
 
-namespace PluginName\Common\Services;
+namespace PluginName\Common\Tools;
 
 defined( 'ABSPATH' ) || exit;
 

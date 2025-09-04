@@ -20,5 +20,5 @@ class Constants {
 	public const PLUGIN_URL = 'https://kadimgultekin.com/';
 	public const EMAIL = 'info@kadimgultekin.com';
 	public const PHP_VERSION = '7.4';
-	public const WP_VERSION = '5.0';
+	public const WP_VERSION = '6.1';
 }

@@ -8,7 +8,7 @@
 
 namespace PluginName\Infrastructure\Taxonomies;
 
-use PluginName\Common\Services\TaxonomyBuilder;
+use PluginName\Common\Tools\TaxonomyBuilder;
 use PluginName\Infrastructure\PostTypes\PostTypeBook;
 
 defined( 'ABSPATH' ) || exit;

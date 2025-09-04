@@ -1,31 +1,30 @@
 <?php
 /**
- * TaxonomyBuilder class
- * This class is responsible for creating taxonomies.
+ * PostTypeBuilder class
+ * This class is responsible for creating post types.
  * @package PluginName
- * @subpackage PluginName\Common\Services
+ * @subpackage PluginName\Common\Tools
  * @since 1.0.0
  */
 
-namespace PluginName\Common\Services;
+namespace PluginName\Common\Tools;
 
 defined( 'ABSPATH' ) || exit;
 
-class TaxonomyBuilder {
-	private string $taxonomy;
-	private array $object_type;
+class PostTypeBuilder {
+	private string $post_type;
 	private array $args;
 	private array $labels;
 
-	public function __construct( string $taxonomy, array $object_type ) {
-		$this->taxonomy    = $taxonomy;
-		$this->object_type = $object_type;
-		$this->args        = [];
-		$this->labels      = [];
+	public function __construct( string $post_type ) {
+		$this->post_type = $post_type;
+		$this->args      = [];
+		$this->labels    = [];
 	}
 
 	/**
-	 * Register the taxonomy
+	 * Register the post type
+	 *
 	 * @return void
 	 * @since 1.0.0
 	 */
@@ -34,13 +33,14 @@ class TaxonomyBuilder {
 			$this->args['labels'] = $this->labels;
 		}
 
-		if ( ! taxonomy_exists( $this->taxonomy ) ) {
-			register_taxonomy( $this->taxonomy, $this->object_type, $this->args );
+		if ( ! post_type_exists( $this->post_type ) ) {
+			register_post_type( $this->post_type, $this->args );
+			flush_rewrite_rules();
 		}
 	}
 
 	/**
-	 * Set the taxonomy arguments
+	 * Set the post type arguments
 	 *
 	 * @param array $args
 	 *
@@ -54,7 +54,7 @@ class TaxonomyBuilder {
 	}
 
 	/**
-	 * Set the taxonomy labels
+	 * Set the post type labels
 	 *
 	 * @param array $labels
 	 *

@@ -51,6 +51,8 @@ class Helper {
 					return sanitize_user( $value );
 				case "bool":
 					return rest_sanitize_boolean( $value );
+				case "key":
+					return sanitize_key( $value );
 				default:
 					return $value;
 			}

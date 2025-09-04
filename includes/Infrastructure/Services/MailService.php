@@ -8,7 +8,7 @@
 
 namespace PluginName\Infrastructure\Services;
 
-use PluginName\Common\Services\Mailer;
+use PluginName\Common\Tools\Mailer;
 
 defined( 'ABSPATH' ) || exit;
 

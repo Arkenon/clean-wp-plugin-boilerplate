@@ -18,13 +18,14 @@ defined( 'ABSPATH' ) || exit;
 
 class CustomFieldService {
 	public function __construct() {
-		$this->addMetaBoxes();
+		add_action( 'init', array( $this, 'addMetaBoxes' ) );
 	}
 
 	/**
 	 * @throws DependencyException
 	 * @throws NotFoundException
 	 * @throws Exception
+	 * @since
 	 */
 	public function addMetaBoxes() {
 		DI::container()->get( CustomFieldISBN::class )->register();

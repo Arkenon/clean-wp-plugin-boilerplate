@@ -18,19 +18,21 @@
 		<table class="form-table">
 			<tr>
 				<th scope="row">
-					<?php echo esc_html_x( 'Plugin settings one', 'plugin_settings_1_title', "plugin-name" ); ?>
+					<label
+						for="plugin_name_settings_one"><?php echo esc_html_x( 'Plugin settings one', 'plugin_settings_1_title', "plugin-name" ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="plugin_name_settings_one"
+					<input type="text" name="plugin_name_settings_one" id="plugin_name_settings_one"
 						   value="<?php echo esc_attr( get_option( 'plugin_name_settings_one' ) ); ?>"/>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<?php echo esc_html_x( 'Plugin settings two', 'plugin_settings_2_title', "plugin-name" ); ?>
+					<label
+						for="plugin_name_settings_two"><?php echo esc_html_x( 'Plugin settings two', 'plugin_settings_2_title', "plugin-name" ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="plugin_name_settings_two"
+					<input type="text" name="plugin_name_settings_two" id="plugin_name_settings_two"
 						   value="<?php echo esc_attr( get_option( 'plugin_name_settings_two' ) ); ?>"/>
 				</td>
 			</tr>

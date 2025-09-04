@@ -13,7 +13,7 @@ namespace PluginName\Persistence\Repositories;
 
 defined( 'ABSPATH' ) || exit;
 
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Models\Book;
 
 use PluginName\Domain\Repositories\BookRepositoryInterface;

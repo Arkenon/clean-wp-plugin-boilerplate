@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 use PluginName\Application\Interfaces\TaxonomyServiceInterface;
 use PluginName\Application\DTOs\Taxonomy\TaxonomyDto;
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Repositories\TaxonomyRepositoryInterface;
 use ReflectionException;
 use WP_Term;

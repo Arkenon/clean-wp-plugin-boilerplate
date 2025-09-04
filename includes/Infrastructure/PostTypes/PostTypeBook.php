@@ -9,7 +9,7 @@
 
 namespace PluginName\Infrastructure\PostTypes;
 
-use PluginName\Common\Services\PostTypeBuilder;
+use PluginName\Common\Tools\PostTypeBuilder;
 
 defined( 'ABSPATH' ) || exit;
 

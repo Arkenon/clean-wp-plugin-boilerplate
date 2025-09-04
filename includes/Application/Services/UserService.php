@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 use PluginName\Application\DTOs\User\UserDto;
 use PluginName\Application\Interfaces\UserServiceInterface;
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Repositories\UserRepositoryInterface;
 use ReflectionException;
 

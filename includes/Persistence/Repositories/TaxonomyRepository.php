@@ -13,7 +13,7 @@ namespace PluginName\Persistence\Repositories;
 
 defined( 'ABSPATH' ) || exit;
 
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Models\Taxonomy;
 use PluginName\Domain\Repositories\TaxonomyRepositoryInterface;
 use ReflectionException;

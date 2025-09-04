@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 use PluginName\Application\DTOs\Post\PostDto;
 use PluginName\Application\Interfaces\PostServiceInterface;
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Repositories\PostRepositoryInterface;
 use ReflectionException;
 use WP_Post;

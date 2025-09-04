@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 
 use PluginName\Application\DTOs\Post\BookDto;
 use PluginName\Application\Interfaces\BookServiceInterface;
-use PluginName\Common\Services\Mapper;
+use PluginName\Common\Tools\Mapper;
 use PluginName\Domain\Repositories\BookRepositoryInterface;
 use ReflectionException;
 

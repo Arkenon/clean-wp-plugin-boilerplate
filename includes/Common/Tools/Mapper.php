@@ -4,10 +4,10 @@
  * This class is responsible for mapping objects to other objects, arrays, etc.
  * Supports generic types
  * @package PluginName
- * @subpackage PluginName\Common\Services
+ * @subpackage PluginName\Common\Tools
  */
 
-namespace PluginName\Common\Services;
+namespace PluginName\Common\Tools;
 
 use ReflectionClass;
 use ReflectionException;
@@ -20,18 +20,18 @@ class Mapper {
 	 * @template TModel (for generic type)
 	 *
 	 * @param object $source The source object to map from
-	 * @param class-string<TModel>|TModel $destination The destination class or object
+	 * @param class-string<TModel> $destination The destination class or object
 	 *
 	 * @psalm-return TModel
 	 * @return object
 	 * @throws ReflectionException
 	 */
-	public function mapObjectToObject( object $source, $destination ): object {
-		$sourceReflection      = ( new Mapper )->getReflectionClass( $source );
-		$destinationReflection = ( new Mapper )->getReflectionClass( $destination );
+	public function mapObjectToObject( object $source, string $destination ): object {
+		$sourceReflection      = ( new Mapper() )->getReflectionClass( $source );
+		$destinationReflection = ( new Mapper() )->getReflectionClass( $destination );
 
-		$sourceInstance      = ( new Mapper )->getInstance( $source );
-		$destinationInstance = ( new Mapper )->getInstance( $destination );
+		$sourceInstance      = ( new Mapper() )->getInstance( $source );
+		$destinationInstance = ( new Mapper() )->getInstance( $destination );
 
 		foreach ( $sourceReflection->getProperties() as $sourceProperty ) {
 			$sourceProperty->setAccessible( true );
@@ -67,7 +67,9 @@ class Mapper {
 
 		foreach ( $reflection->getProperties() as $property ) {
 			$property->setAccessible( true );
-			$result[ $property->getName() ] = $property->getValue( $instance );
+			if ( $property->getName() !== null ) {
+				$result[ $property->getName() ] = $property->getValue( $instance );
+			}
 		}
 
 		return $result;
@@ -79,15 +81,15 @@ class Mapper {
 	 * @template TModel (for generic type)
 	 *
 	 * @param array $source The source array to map from
-	 * @param class-string<TModel>|TModel $destination The destination class or object
+	 * @param class-string<TModel> $destination The destination class or object
 	 *
 	 * @psalm-return TModel
 	 * @return object
 	 * @throws ReflectionException
 	 */
-	public function mapArrayToObject( array $source, $destination ): object {
-		$reflection = ( new Mapper )->getReflectionClass( $destination );
-		$instance   = ( new Mapper )->getInstance( $destination );
+	public function mapArrayToObject( array $source, string $destination ): object {
+		$reflection = ( new Mapper() )->getReflectionClass( $destination );
+		$instance   = ( new Mapper() )->getInstance( $destination );
 
 		foreach ( $source as $key => $value ) {
 			if ( $reflection->hasProperty( $key ) ) {
@@ -100,6 +102,18 @@ class Mapper {
 		return $instance;
 	}
 
+	/**
+	 * Maps an array to another array
+	 *
+	 * @param array $source The source array to map from
+	 * @param array $destination The destination array
+	 *
+	 * @return array
+	 * @since 1.0.0
+	 */
+	public function mapArrayToArray( array $destination, array $source ): array {
+		return wp_parse_args( $destination, $source );
+	}
 
 	/**
 	 * Returns an instance of ReflectionClass
