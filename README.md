@@ -249,7 +249,7 @@ Persistence Layer (Database, WP API Wrappers)
 
 ## Generic Prompt for AI Assistants
 
-You must use the **clean-wp-plugin-boilerplate** for developing this WordPress plugin.  
+You must use the **clean-wp-plugin-boilerplate** for developing this WordPress plugin.
 This boilerplate is based on WordPress Create Block and Clean Architecture principles,
 and it enforces a layered, maintainable structure.
 
@@ -272,28 +272,64 @@ and it enforces a layered, maintainable structure.
     - Place React/JSX code in `/src`
     - Build with `npm run build`
     - Register via `includes/Infrastructure/Services/BlockService.php`
-    - 
-- Always follow the naming convention:  
-`plugin_name` for variables
-`plugin-name` for file names, folder names, slugs and text domains
-`PluginName` for class names and namespaces
-`PLUGIN_NAME`for constants and defines
-`pluginName` for JS variables, method and function names
+    -
+- Always follow the naming convention:
+  `plugin_name` for variables
+  `plugin-name` for file names, folder names, slugs and text domains
+  `PluginName` for class names and namespaces
+  `PLUGIN_NAME`for constants and defines
+  `pluginName` for JS variables, method and function names
 
-- Extend post types from the base Post model in the Domain Layer. (Post.php)
-- Extend taxonomy models from the base Taxonomy model in the Domain Layer. (Taxonomy.php)
-- Do not need to use properties suc as $name, $title, $content, $description in post type model. Already defined in the base Post model.
-- Do not need to use properties such as $name, $slug, $description in taxonomy model. Already defined in the base Taxonomy model.
-- Always add defined( 'ABSPATH' ) || exit; after namespace section of PHP files.
-- Always document classes and methods/functions at the top of the class (class PhpDoc must include @package, @subpackage, @since tags).
-- Always use translation functions `__()` and `_e()` with the text domain `plugin-name`.
-- Always sanitize inputs with appropriate `sanitize_*` functions and escape outputs with `esc_*` functions. (Sanitize first, escape later. Always validate.)
-- Always use translation functions `__()` and `_e()` with the text domain `plugin-name`.
-- Always sanitize inputs with appropriate `sanitize_*` functions and escape outputs with `esc_*` functions.
-- Use nonces and capability checks for security in admin actions.
-- Check user permissions with `current_user_can()` before sensitive operations.
-- Optimize performance by minimizing database queries, using transients for caching, and loading assets conditionally
-- Follow WordPress coding standards and PSR-4 autoloading.
+- General Instructions:
+    - Always add defined( 'ABSPATH' ) || exit; after namespace section of PHP files.
+    - Always import used classes with `use` statements after namespace section of PHP files.
+    - Always document classes and methods/functions at the top of the class (class PhpDoc must include @package, @subpackage, @since tags).
+    - Always use translation functions `__()` and `_e()` with the text domain `plugin-name`.
+    - Always sanitize inputs with appropriate `sanitize_*` functions and escape outputs with `esc_*` functions. (Sanitize first, escape later. Always validate.)
+    - Use nonces and capability checks for security in admin actions.
+    - Check user permissions with `current_user_can()` before sensitive operations.
+    - Optimize performance by minimizing database queries, using transients for caching, and loading assets conditionally
+    - Follow WordPress coding standards and PSR-4 autoloading.
+
+- Model Specific Instructions (Domain/Models):
+    - Extend post types from the base Post model in the Domain Layer. (Post.php)
+    - Extend taxonomy models from the base Taxonomy model in the Domain Layer. (Taxonomy.php)
+    - Do not need to use properties suc as $name, $title, $content, $description in post type model. Already defined in the base Post model.
+    - Do not need to use properties such as $name, $slug, $description in taxonomy model. Already defined in the base Taxonomy model.
+
+-  Repository Interfaces Instructions (Domain/Repositories):
+    - Extend post type repositories from PostRepositoryInterface.php
+    - Extend taxonomy repositories from TaxonomyRepositoryInterface.php
+    - Add only custom methods which are not defined in the base repository interfaces.
+
+- DTO Specific Instructions (Application/DTOs):
+    - Extend post type DTOs from PostDto.php
+    - Extend taxonomy DTOs from TaxonomyDto.php
+    - Add only custom fields which are not defined in the base DTOs.
+
+- Service Interface Instructions (Application/Interfaces):
+    - Extend post type services from PostServiceInterface.php
+    - Extend taxonomy services from TaxonomyServiceInterface.php
+    - Add only custom methods which are not defined in the base service interfaces.
+
+- Service Implementation Instructions (Application/Services):
+    - Extend post type services from PostServiceInterface.php and implement the related service interface. (For example: class BookService extends PostService implements BookServiceInterface)
+    - Implement taxonomy services from TaxonomyServiceInterface.php
+
+- Repository Implementation Instructions (Persistence/Repositories):
+    - Extend post type repositories from PostRepository.php and implement the related repository interface. (For example: class BookRepository extends PostRepository implements BookRepositoryInterface)
+    - Implement taxonomy repositories from TaxonomyRepositoryInterface.php (For example: class GenreRepository extends TaxonomyRepository implements GenreRepositoryInterface)
+
+🛠 Development workflow:
+1. Install composer dependencies: `composer update`
+2. Install npm dependencies: `npm i`
+3. Update packages: `npm run packages-update`
+4. Use `npm start` for development (watch mode)
+5. Use `npm run build` for production
+6. Follow **GPL v2 or later** license compatibility
+
+Your task: When I describe a feature, requirement, or entity, implement it strictly within this boilerplate’s architecture,
+ensuring clean code, separation of concerns, and WordPress best practices.
 
 🛠 Development workflow:
 1. Install composer dependencies: `composer update`
